@@ -7,7 +7,7 @@
   --color-footer-bg: var(--color-background);
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --color-background: #212529; /* Softer dark (Bootstrap gray-900) */
     --color-surface: #343a40;    /* Slightly lighter surface (Bootstrap gray-800) */
@@ -15,7 +15,7 @@
     --color-footer-bg: var(--color-surface);
   }
 } 
-*/
+
 
 body {
   margin: 0;
