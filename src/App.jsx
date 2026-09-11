@@ -7,6 +7,7 @@ import SedecoNavbar from './components/SedecoNavbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Programas from './pages/Programas'
+import Login from './pages/Login'
 import './App.css'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/programas" element={<Programas />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
 
         <Footer />
