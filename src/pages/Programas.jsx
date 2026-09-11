@@ -65,14 +65,14 @@ const Programas = () => {
         {/* Mercado Libre Banner */}
         <div className="col-lg-6 mb-4" data-aos="fade-right" data-aos-delay="100">
           <div className="featured-banner h-100 d-flex flex-column" style={{ backgroundColor: 'var(--color-surface)' }}>
-            <div style={{ position: 'relative', overflow: 'hidden' }}>
-              <img src="/img/ml-colima.png" alt="Emprende en Mercado Libre" className="img-fluid w-100" style={{ objectFit: 'cover' }} />
+            <div style={{ position: 'relative', overflow: 'hidden', height: '250px' }}>
+              <img src="/img/ml-banner.png" alt="Emprende en Mercado Libre" className="img-fluid w-100 h-100" style={{ objectFit: 'cover' }} />
             </div>
-            <div className="p-4 d-flex flex-column flex-grow-1" style={{ borderTop: '5px solid #FFE600' }}>
-              <h3 className="font-weight-bold mb-3" style={{ color: '#2d3277' }}>Tienda Oficial Hecho en Colima</h3>
+            <div className="p-4 d-flex flex-column flex-grow-1" style={{ borderTop: '5px solid var(--color-secondary)' }}>
+              <h3 className="font-weight-bold mb-3" style={{ color: 'var(--color-primary)' }}>Tienda Oficial Hecho en Colima</h3>
               <p className="mb-4" style={{ color: 'var(--color-text)' }}>Forma parte del ecosistema de Mercado Libre. Capacitación práctica, identidad comercial y acceso a Mercado Pago y Mercado Envíos.</p>
               <div className="mt-auto">
-                <a href="https://tienda.mercadolibre.com.mx/hecho-en-colima" target="_blank" rel="noreferrer" className="btn font-weight-bold shadow-sm w-100" style={{ backgroundColor: '#FFE600', color: '#2d3277', borderRadius: '30px' }}>
+                <a href="https://tienda.mercadolibre.com.mx/hecho-en-colima" target="_blank" rel="noreferrer" className="btn font-weight-bold shadow-sm w-100 text-white" style={{ backgroundColor: 'var(--color-secondary)', borderRadius: '30px' }}>
                   Ir a la Tienda Oficial <i className="fa fa-external-link ml-2"></i>
                 </a>
               </div>
@@ -83,14 +83,14 @@ const Programas = () => {
         {/* DHL Banner */}
         <div className="col-lg-6 mb-4" data-aos="fade-left" data-aos-delay="200">
           <div className="featured-banner h-100 d-flex flex-column" style={{ backgroundColor: 'var(--color-surface)' }}>
-            <div style={{ position: 'relative', overflow: 'hidden' }}>
-              <img src="/img/dhl-pymes.png" alt="DHL PyMES Program" className="img-fluid w-100" style={{ objectFit: 'cover', borderBottom: '1px solid #eee' }} />
+            <div style={{ position: 'relative', overflow: 'hidden', height: '250px' }}>
+              <img src="/img/dhl-banner.jpg" alt="DHL PyMES Program" className="img-fluid w-100 h-100" style={{ objectFit: 'cover', borderBottom: '1px solid #eee' }} />
             </div>
-            <div className="p-4 d-flex flex-column flex-grow-1" style={{ borderTop: '5px solid #d40511' }}>
-              <h3 className="font-weight-bold mb-3" style={{ color: '#d40511' }}>DHL PyMES Program</h3>
+            <div className="p-4 d-flex flex-column flex-grow-1" style={{ borderTop: '5px solid var(--color-secondary)' }}>
+              <h3 className="font-weight-bold mb-3" style={{ color: 'var(--color-primary)' }}>DHL PyMES Program</h3>
               <p className="mb-4" style={{ color: 'var(--color-text)' }}>Internacionaliza tu negocio con increíbles beneficios: <strong>Hasta 60%</strong> de descuento nacional y <strong>Hasta 80%</strong> en envíos internacionales.</p>
               <div className="mt-auto">
-                <a href="https://www.dhl.com/discover/es-mx/PYMES/page-pymes-program" target="_blank" rel="noreferrer" className="btn font-weight-bold text-white shadow-sm w-100" style={{ backgroundColor: '#d40511', borderRadius: '30px' }}>
+                <a href="https://www.dhl.com/discover/es-mx/PYMES/page-pymes-program" target="_blank" rel="noreferrer" className="btn font-weight-bold text-white shadow-sm w-100" style={{ backgroundColor: 'var(--color-secondary)', borderRadius: '30px' }}>
                   Abrir cuenta PyME <i className="fa fa-external-link ml-2"></i>
                 </a>
               </div>
