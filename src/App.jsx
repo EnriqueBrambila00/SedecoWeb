@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Navbar from './components/Navbar'
 import SedecoNavbar from './components/SedecoNavbar'
 import Footer from './components/Footer'
@@ -8,6 +10,14 @@ import Programas from './pages/Programas'
 import './App.css'
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: false,
+      easing: 'ease-out-cubic',
+    })
+  }, [])
+
   return (
     <Router>
       <div className="app-container">
