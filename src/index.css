@@ -1,5 +1,5 @@
 :root {
-  --color-primary: #9d2449;   /* Guinda (Rojo institucional) */
+  --color-primary: #7f2841;   /* Guinda (Rojo institucional) */
   --color-secondary: #BC955C; /* Dorado */
   --color-background: #FFFFFF;/* Blanco */
   --color-surface: #FFFFFF;
@@ -7,14 +7,15 @@
   --color-footer-bg: var(--color-background);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --color-background: #212529; /* Softer dark (Bootstrap gray-900) */
     --color-surface: #343a40;    /* Slightly lighter surface (Bootstrap gray-800) */
     --color-text: #f8f9fa;       /* Light text */
     --color-footer-bg: var(--color-surface);
   }
-}
+} 
+*/
 
 body {
   margin: 0;
