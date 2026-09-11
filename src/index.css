@@ -9,12 +9,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #212529; /* Softer dark (Bootstrap gray-900) */
-    --color-surface: #343a40;    /* Slightly lighter surface (Bootstrap gray-800) */
-    --color-text: #f8f9fa;       /* Light text */
-    --color-footer-bg: var(--color-surface);
+    --color-background: #1C1518; /* Oscuro con matiz guinda */
+    --color-surface: #291D21;    /* Tarjetas / paneles */
+    --color-text: #F5EDF0;       /* Texto principal */
+    --color-footer-bg: #140E11;  /* Footer */
   }
-} 
 
 
 body {
