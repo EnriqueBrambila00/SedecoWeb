@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import Programas from './pages/Programas'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Noticias from './pages/Noticias'
 import DashboardSuperAdmin from './pages/DashboardSuperAdmin'
 import DashboardAdmin from './pages/DashboardAdmin'
 import './App.css'
@@ -52,6 +53,7 @@ function App() {
           <Route path="/programas" element={<Programas />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/noticias" element={<Noticias />} />
           
           <Route 
             path="/dashboard-superadmin" 
