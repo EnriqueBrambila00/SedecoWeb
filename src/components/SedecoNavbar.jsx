@@ -57,10 +57,16 @@ const SedecoNavbar = () => {
               <Link className="nav-link" to="/programas" style={{ color: 'var(--color-text)' }}>Programas y Servicios</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#directorio" style={{ color: 'var(--color-text)' }}>Directorio</a>
+              <Link className="nav-link" to="/noticias" style={{ color: 'var(--color-text)' }}>Noticias</Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contacto" style={{ color: 'var(--color-text)' }}>Contacto SEDECO</a>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="masOpcionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: 'var(--color-text)' }}>
+                Más opciones
+              </a>
+              <div className="dropdown-menu" aria-labelledby="masOpcionesDropdown" style={{ backgroundColor: 'var(--color-surface)' }}>
+                <a className="dropdown-item" href="#directorio" style={{ color: 'var(--color-text)' }}>Directorio</a>
+                <a className="dropdown-item" href="#contacto" style={{ color: 'var(--color-text)' }}>Contacto SEDECO</a>
+              </div>
             </li>
           </ul>
           <ul className="navbar-nav ml-auto">

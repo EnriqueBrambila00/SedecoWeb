@@ -174,7 +174,11 @@ const DashboardSuperAdmin = () => {
           </li>
         </ul>
         
+        
         <div className="mt-5 text-center">
+          <button className="btn btn-outline-light w-100 mb-2" onClick={() => navigate('/')}>
+            <i className="fa fa-arrow-left mr-2"></i> Volver a la Página
+          </button>
           <button className="btn btn-outline-light w-100" onClick={handleLogout}>
             <i className="fa fa-sign-out mr-2"></i> Salir
           </button>
@@ -240,7 +244,7 @@ const DashboardSuperAdmin = () => {
                       <th>Acciones</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style={{ color: 'var(--color-text)' }}>
                     {usuarios.map(u => (
                       <tr key={u.id_usuario}>
                         <td>{u.id_usuario}</td>
@@ -295,7 +299,7 @@ const DashboardSuperAdmin = () => {
                       <th>Acciones</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style={{ color: 'var(--color-text)' }}>
                     {noticias.map(n => (
                       <tr key={n.id_noticia}>
                         <td>{n.id_noticia}</td>
@@ -332,7 +336,7 @@ const DashboardSuperAdmin = () => {
                   <h5 className="modal-title">Agregar Nueva Noticia</h5>
                   <button className="close text-white" onClick={() => setShowModal(false)}>&times;</button>
                 </div>
-                <div className="modal-body">
+                <div className="modal-body" style={{ color: 'var(--color-text)' }}>
                   <form onSubmit={handleCrearNoticia}>
                     <div className="form-group">
                       <label>Título</label>
