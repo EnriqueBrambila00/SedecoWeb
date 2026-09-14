@@ -13,6 +13,10 @@ const DashboardSuperAdmin = () => {
   const [showModal, setShowModal] = useState(false);
   const [nuevaNoticia, setNuevaNoticia] = useState({ titulo: '', contenido: '', url_imagen: '', estatus: 'Activo' });
 
+  // Estados para Modal de Edición
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [noticiaEditando, setNoticiaEditando] = useState(null);
+
   const token = localStorage.getItem('token');
   const usuarioLocal = JSON.parse(localStorage.getItem('usuario'));
 
@@ -116,6 +120,32 @@ const DashboardSuperAdmin = () => {
     } catch (error) { 
       console.error("Error creando noticia", error); 
       alert("Error de conexión al intentar guardar la noticia");
+    }
+  };
+
+  const handleGuardarEdicion = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/noticias/${noticiaEditando.id_noticia}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(noticiaEditando)
+      });
+      if (res.ok) {
+        alert("Noticia actualizada con éxito");
+        setShowEditModal(false);
+        setNoticiaEditando(null);
+        fetchNoticias();
+      } else {
+        const errorData = await res.json();
+        alert(`Error al actualizar: ${errorData.error || 'Desconocido'}`);
+      }
+    } catch (error) {
+      console.error("Error actualizando noticia", error);
+      alert("Error de conexión al intentar actualizar la noticia");
     }
   };
 
@@ -321,6 +351,9 @@ const DashboardSuperAdmin = () => {
                           </button>
                         </td>
                         <td>
+                          <button className="btn btn-sm btn-info mr-2" onClick={() => { setNoticiaEditando(n); setShowEditModal(true); }}>
+                            <i className="fa fa-edit"></i>
+                          </button>
                           <button className="btn btn-sm btn-danger" onClick={() => eliminarNoticia(n.id_noticia)}>
                             <i className="fa fa-trash"></i>
                           </button>
@@ -358,6 +391,37 @@ const DashboardSuperAdmin = () => {
                       <textarea className="form-control" rows="5" required value={nuevaNoticia.contenido} onChange={e => setNuevaNoticia({...nuevaNoticia, contenido: e.target.value})}></textarea>
                     </div>
                     <button type="submit" className="btn btn-block text-white" style={{ backgroundColor: 'var(--color-secondary)' }}>Guardar Noticia</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Modal Edición Noticia */}
+        {showEditModal && noticiaEditando && (
+          <div className="modal d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+            <div className="modal-dialog modal-lg">
+              <div className="modal-content">
+                <div className="modal-header" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
+                  <h5 className="modal-title">Editar Noticia</h5>
+                  <button className="close text-white" onClick={() => setShowEditModal(false)}>&times;</button>
+                </div>
+                <div className="modal-body" style={{ color: 'var(--color-text)' }}>
+                  <form onSubmit={handleGuardarEdicion}>
+                    <div className="form-group">
+                      <label>Título</label>
+                      <input type="text" className="form-control" required value={noticiaEditando.titulo} onChange={e => setNoticiaEditando({...noticiaEditando, titulo: e.target.value})} />
+                    </div>
+                    <div className="form-group">
+                      <label>URL de Imagen</label>
+                      <input type="text" className="form-control" value={noticiaEditando.url_imagen || ''} onChange={e => setNoticiaEditando({...noticiaEditando, url_imagen: e.target.value})} />
+                    </div>
+                    <div className="form-group">
+                      <label>Contenido</label>
+                      <textarea className="form-control" rows="5" required value={noticiaEditando.contenido} onChange={e => setNoticiaEditando({...noticiaEditando, contenido: e.target.value})}></textarea>
+                    </div>
+                    <button type="submit" className="btn btn-block text-white" style={{ backgroundColor: 'var(--color-secondary)' }}>Guardar Cambios</button>
                   </form>
                 </div>
               </div>
