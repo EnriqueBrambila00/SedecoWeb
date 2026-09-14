@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Programas from './pages/Programas'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import './App.css'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/programas" element={<Programas />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
 
         <Footer />
