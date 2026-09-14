@@ -71,16 +71,32 @@ const SedecoNavbar = () => {
                 </Link>
               </li>
             ) : (
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: 'var(--color-primary)' }}>
-                  <i className="fa fa-user mr-1"></i> ¡Hola, {userName}!
-                </a>
-                <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style={{ backgroundColor: 'var(--color-surface)' }}>
-                  <button className="dropdown-item text-danger font-weight-bold" onClick={handleLogout}>
-                    <i className="fa fa-sign-out mr-2"></i> Cerrar Sesión
+              <>
+                <li className="nav-item">
+                  <a 
+                    className="nav-link text-white px-3 font-weight-bold" 
+                    href={
+                      JSON.parse(localStorage.getItem('usuario'))?.id_rol === 1 
+                        ? "/dashboard-superadmin" 
+                        : JSON.parse(localStorage.getItem('usuario'))?.id_rol === 2 
+                          ? "/dashboard-admin" 
+                          : "/"
+                    }
+                    style={{ backgroundColor: 'var(--color-primary)', borderRadius: '20px' }}
+                  >
+                    <i className="fa fa-user-circle mr-1"></i> {userName}
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <button 
+                    onClick={handleLogout} 
+                    className="btn btn-outline-light nav-link px-3 ml-2 text-danger font-weight-bold" 
+                    style={{ borderRadius: '20px', backgroundColor: 'transparent', border: 'none' }}
+                  >
+                    <i className="fa fa-sign-out mr-1"></i> Salir
                   </button>
-                </div>
-              </li>
+                </li>
+              </>
             )}
           </ul>
         </div>

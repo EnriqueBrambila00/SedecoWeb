@@ -26,13 +26,22 @@ const Login = () => {
         throw new Error(data.error || 'Error al iniciar sesión');
       }
 
-      // Guardar el token y la info del usuario en localStorage
+      // Guardar en LocalStorage
       localStorage.setItem('token', data.token);
       localStorage.setItem('usuario', JSON.stringify(data.usuario));
 
-      // Redirigir al inicio o a un panel de control
-      window.dispatchEvent(new Event('storage')); // Para que el Navbar se actualice
-      navigate('/');
+      // Disparar un evento para que el Navbar se actualice (si es necesario)
+      window.dispatchEvent(new Event('storage'));
+
+      // Redirigir según el rol del usuario
+      const idRol = data.usuario.id_rol;
+      if (idRol === 1) {
+        navigate('/dashboard-superadmin');
+      } else if (idRol === 2) {
+        navigate('/dashboard-admin');
+      } else {
+        navigate('/'); // Usuario normal
+      }
       
     } catch (err) {
       setError(err.message);
