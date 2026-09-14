@@ -96,20 +96,27 @@ const DashboardSuperAdmin = () => {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/noticias`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           ...nuevaNoticia,
-          id_usuario: usuarioLocal.id_usuario
+          id_usuario: usuarioLocal ? usuarioLocal.id_usuario : 1
         })
       });
       if (res.ok) {
-        alert("Noticia creada");
+        alert("Noticia guardada con éxito");
         setShowModal(false);
         setNuevaNoticia({ titulo: '', contenido: '', url_imagen: '', estatus: 'Activo' });
         fetchNoticias();
+      } else {
+        const errorData = await res.json();
+        alert(`Error al guardar: ${errorData.error || 'Desconocido'}`);
       }
-    } catch (error) { console.error("Error creando noticia", error); }
+    } catch (error) { 
+      console.error("Error creando noticia", error); 
+      alert("Error de conexión al intentar guardar la noticia");
+    }
   };
 
   const cambiarEstatusNoticia = async (id_noticia, estatusActual) => {
