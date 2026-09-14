@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const DashboardAdmin = () => {
   const navigate = useNavigate();
+  const [stats, setStats] = useState({
+    usuarios: 0,
+    noticias: 0,
+    encuestas: 0,
+    respuestas: 0,
+    mensajes: 0
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/stats`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setStats(data);
+        }
+      } catch (error) {
+        console.error("Error al obtener estadísticas:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStats();
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -55,7 +86,7 @@ const DashboardAdmin = () => {
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-list-alt"></i></h1>
                 <h5 className="card-title text-muted">Encuestas Activas</h5>
-                <h2>3</h2>
+                <h2>{loading ? '...' : stats.encuestas}</h2>
               </div>
             </div>
           </div>
@@ -64,7 +95,7 @@ const DashboardAdmin = () => {
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-check-square-o"></i></h1>
                 <h5 className="card-title text-muted">Respuestas Recibidas</h5>
-                <h2>1,024</h2>
+                <h2>{loading ? '...' : stats.respuestas}</h2>
               </div>
             </div>
           </div>

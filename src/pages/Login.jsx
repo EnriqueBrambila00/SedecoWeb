@@ -33,15 +33,8 @@ const Login = () => {
       // Disparar un evento para que el Navbar se actualice (si es necesario)
       window.dispatchEvent(new Event('storage'));
 
-      // Redirigir según el rol del usuario
-      const idRol = data.usuario.id_rol;
-      if (idRol === 1) {
-        navigate('/dashboard-superadmin');
-      } else if (idRol === 2) {
-        navigate('/dashboard-admin');
-      } else {
-        navigate('/'); // Usuario normal
-      }
+      // Redirigir a todos a la página principal por solicitud
+      navigate('/');
       
     } catch (err) {
       setError(err.message);

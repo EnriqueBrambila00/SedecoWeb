@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const DashboardSuperAdmin = () => {
   const navigate = useNavigate();
+  const [stats, setStats] = useState({
+    usuarios: 0,
+    noticias: 0,
+    encuestas: 0,
+    respuestas: 0,
+    mensajes: 0
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/stats`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setStats(data);
+        }
+      } catch (error) {
+        console.error("Error al obtener estadísticas:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStats();
+  }, []);
 
   // Función básica de logout
   const handleLogout = () => {
@@ -53,7 +84,7 @@ const DashboardSuperAdmin = () => {
       <div className="flex-grow-1 p-4">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2 style={{ color: 'var(--color-primary)' }}>Panel de Control Principal</h2>
-          <span className="badge badge-primary p-2" style={{ backgroundColor: 'var(--color-secondary)' }}>Nivel: Dios</span>
+          <span className="badge badge-primary p-2" style={{ backgroundColor: 'var(--color-secondary)' }}>Nivel: Superadmin</span>
         </div>
 
         <div className="row">
@@ -62,7 +93,7 @@ const DashboardSuperAdmin = () => {
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-users"></i></h1>
                 <h5 className="card-title text-muted">Total Usuarios</h5>
-                <h2>142</h2>
+                <h2>{loading ? '...' : stats.usuarios}</h2>
               </div>
             </div>
           </div>
@@ -70,8 +101,8 @@ const DashboardSuperAdmin = () => {
             <div className="card shadow-sm border-0 h-100">
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-file-text"></i></h1>
-                <h5 className="card-title text-muted">Páginas Activas</h5>
-                <h2>12</h2>
+                <h5 className="card-title text-muted">Encuestas Activas</h5>
+                <h2>{loading ? '...' : stats.encuestas}</h2>
               </div>
             </div>
           </div>
@@ -80,7 +111,7 @@ const DashboardSuperAdmin = () => {
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-newspaper-o"></i></h1>
                 <h5 className="card-title text-muted">Noticias</h5>
-                <h2>45</h2>
+                <h2>{loading ? '...' : stats.noticias}</h2>
               </div>
             </div>
           </div>
@@ -89,7 +120,7 @@ const DashboardSuperAdmin = () => {
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-envelope"></i></h1>
                 <h5 className="card-title text-muted">Mensajes</h5>
-                <h2>8</h2>
+                <h2>{loading ? '...' : stats.mensajes}</h2>
               </div>
             </div>
           </div>

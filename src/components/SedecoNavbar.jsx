@@ -72,20 +72,35 @@ const SedecoNavbar = () => {
               </li>
             ) : (
               <>
+                {JSON.parse(localStorage.getItem('usuario'))?.id_rol === 1 && (
+                  <li className="nav-item">
+                    <Link 
+                      className="nav-link text-white px-3 font-weight-bold mr-2" 
+                      to="/dashboard-superadmin" 
+                      style={{ backgroundColor: 'var(--color-secondary)', borderRadius: '20px' }}
+                    >
+                      <i className="fa fa-tachometer mr-1"></i> Panel de Control
+                    </Link>
+                  </li>
+                )}
+                {JSON.parse(localStorage.getItem('usuario'))?.id_rol === 2 && (
+                  <li className="nav-item">
+                    <Link 
+                      className="nav-link text-white px-3 font-weight-bold mr-2" 
+                      to="/dashboard-admin" 
+                      style={{ backgroundColor: 'var(--color-secondary)', borderRadius: '20px' }}
+                    >
+                      <i className="fa fa-tachometer mr-1"></i> Panel de Control
+                    </Link>
+                  </li>
+                )}
                 <li className="nav-item">
-                  <a 
+                  <span 
                     className="nav-link text-white px-3 font-weight-bold" 
-                    href={
-                      JSON.parse(localStorage.getItem('usuario'))?.id_rol === 1 
-                        ? "/dashboard-superadmin" 
-                        : JSON.parse(localStorage.getItem('usuario'))?.id_rol === 2 
-                          ? "/dashboard-admin" 
-                          : "/"
-                    }
                     style={{ backgroundColor: 'var(--color-primary)', borderRadius: '20px' }}
                   >
                     <i className="fa fa-user-circle mr-1"></i> {userName}
-                  </a>
+                  </span>
                 </li>
                 <li className="nav-item">
                   <button 
