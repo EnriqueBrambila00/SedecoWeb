@@ -44,8 +44,8 @@ const SedecoNavbar = () => {
         <Link className="navbar-brand font-weight-bold" style={{ color: 'var(--color-primary)' }} to="/">
           SEDECO Colima
         </Link>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#sedecoNavbar" aria-controls="sedecoNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+        <button className="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#sedecoNavbar" aria-controls="sedecoNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i className="fa fa-bars fa-lg" style={{ color: 'var(--color-primary)' }}></i>
         </button>
 
         <div className="collapse navbar-collapse" id="sedecoNavbar">
