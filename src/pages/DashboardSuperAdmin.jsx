@@ -179,7 +179,7 @@ const DashboardSuperAdmin = () => {
   };
 
   return (
-    <div className="d-flex" style={{ minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
+    <div className="d-flex" style={{ minHeight: '100vh', backgroundColor: 'var(--color-background)' }}>
       
       {/* Sidebar */}
       <div className="text-white p-3" style={{ width: '250px', backgroundColor: 'var(--color-primary)' }}>
@@ -237,7 +237,7 @@ const DashboardSuperAdmin = () => {
         {activeTab === 'inicio' && (
           <div className="row">
             <div className="col-md-3 mb-4">
-              <div className="card shadow-sm border-0 h-100">
+              <div className="card shadow-sm border-0 h-100" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
                 <div className="card-body text-center">
                   <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-users"></i></h1>
                   <h5 className="card-title text-muted">Total Usuarios</h5>
@@ -246,7 +246,7 @@ const DashboardSuperAdmin = () => {
               </div>
             </div>
             <div className="col-md-3 mb-4">
-              <div className="card shadow-sm border-0 h-100">
+              <div className="card shadow-sm border-0 h-100" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
                 <div className="card-body text-center">
                   <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-file-text"></i></h1>
                   <h5 className="card-title text-muted">Encuestas Activas</h5>
@@ -255,7 +255,7 @@ const DashboardSuperAdmin = () => {
               </div>
             </div>
             <div className="col-md-3 mb-4">
-              <div className="card shadow-sm border-0 h-100">
+              <div className="card shadow-sm border-0 h-100" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
                 <div className="card-body text-center">
                   <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-newspaper-o"></i></h1>
                   <h5 className="card-title text-muted">Noticias</h5>
@@ -268,10 +268,10 @@ const DashboardSuperAdmin = () => {
 
         {/* CONTENIDO USUARIOS */}
         {activeTab === 'usuarios' && (
-          <div className="card shadow-sm border-0">
+          <div className="card shadow-sm border-0" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
             <div className="card-body">
               <div className="table-responsive">
-                <table className="table table-hover">
+                <table className="table">
                   <thead style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
                     <tr>
                       <th>ID</th>
@@ -317,8 +317,8 @@ const DashboardSuperAdmin = () => {
 
         {/* CONTENIDO NOTICIAS */}
         {activeTab === 'noticias' && (
-          <div className="card shadow-sm border-0">
-            <div className="card-header bg-white d-flex justify-content-between align-items-center">
+          <div className="card shadow-sm border-0" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
+            <div className="card-header d-flex justify-content-between align-items-center" style={{ backgroundColor: 'transparent', borderBottom: '1px solid rgba(128,128,128,0.2)' }}>
               <h5 className="mb-0">Lista de Noticias</h5>
               <button className="btn text-white" style={{ backgroundColor: 'var(--color-secondary)' }} onClick={() => setShowModal(true)}>
                 <i className="fa fa-plus mr-1"></i> Nueva Noticia
@@ -326,7 +326,7 @@ const DashboardSuperAdmin = () => {
             </div>
             <div className="card-body">
               <div className="table-responsive">
-                <table className="table table-hover">
+                <table className="table">
                   <thead style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
                     <tr>
                       <th>ID</th>

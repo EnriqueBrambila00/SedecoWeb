@@ -43,7 +43,7 @@ const DashboardAdmin = () => {
   };
 
   return (
-    <div className="d-flex" style={{ minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
+    <div className="d-flex" style={{ minHeight: '100vh', backgroundColor: 'var(--color-background)' }}>
       
       {/* Sidebar (Menú Lateral) */}
       <div className="text-white p-3" style={{ width: '250px', backgroundColor: 'var(--color-primary)' }}>
@@ -85,7 +85,7 @@ const DashboardAdmin = () => {
 
         <div className="row">
           <div className="col-md-4 mb-4">
-            <div className="card shadow-sm border-0 h-100">
+            <div className="card shadow-sm border-0 h-100" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-list-alt"></i></h1>
                 <h5 className="card-title text-muted">Encuestas Activas</h5>
@@ -94,7 +94,7 @@ const DashboardAdmin = () => {
             </div>
           </div>
           <div className="col-md-4 mb-4">
-            <div className="card shadow-sm border-0 h-100">
+            <div className="card shadow-sm border-0 h-100" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-check-square-o"></i></h1>
                 <h5 className="card-title text-muted">Respuestas Recibidas</h5>
@@ -103,7 +103,7 @@ const DashboardAdmin = () => {
             </div>
           </div>
           <div className="col-md-4 mb-4">
-            <div className="card shadow-sm border-0 h-100">
+            <div className="card shadow-sm border-0 h-100" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
               <div className="card-body text-center">
                 <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-download"></i></h1>
                 <h5 className="card-title text-muted">Reportes Generados</h5>
@@ -113,8 +113,8 @@ const DashboardAdmin = () => {
           </div>
         </div>
 
-        <div className="card shadow-sm border-0 mt-4">
-          <div className="card-header bg-white font-weight-bold" style={{ color: 'var(--color-primary)' }}>
+        <div className="card shadow-sm border-0 mt-4" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
+          <div className="card-header font-weight-bold" style={{ backgroundColor: 'transparent', borderBottom: '1px solid rgba(128,128,128,0.2)', color: 'var(--color-primary)' }}>
             Gestión de Encuestas
           </div>
           <div className="card-body">
