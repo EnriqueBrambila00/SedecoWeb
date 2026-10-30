@@ -3,17 +3,62 @@
   --color-secondary: #BC955C; /* Dorado */
   --color-background: #FFFFFF;/* Blanco */
   --color-surface: #FFFFFF;
-  --color-text: #333333;
-  --color-footer-bg: var(--color-background);
+  --color-text: #2c2527;
+  --color-text-muted: #6c757d;
+  --color-footer-bg: #FFFFFF;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-card-border: rgba(0, 0, 0, 0.08);
+  --color-input-bg: #FFFFFF;
+  --color-input-text: #333333;
+  --color-input-border: #ced4da;
+  color-scheme: light;
 }
 
+/* Preferencia de sistema cuando no se ha seleccionado explícitamente */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-background: #1C1518; /* Oscuro con matiz guinda */
     --color-surface: #291D21;    /* Tarjetas / paneles */
     --color-text: #F5EDF0;       /* Texto principal */
+    --color-text-muted: #b5a4ab;
     --color-footer-bg: #140E11;  /* Footer */
+    --color-border: rgba(255, 255, 255, 0.12);
+    --color-card-border: rgba(255, 255, 255, 0.1);
+    --color-input-bg: #22171b;
+    --color-input-text: #F5EDF0;
+    --color-input-border: rgba(255, 255, 255, 0.2);
+    color-scheme: dark;
   }
+}
+
+/* Modo Normal / Claro explícito */
+:root[data-theme="light"] {
+  --color-background: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-text: #2c2527;
+  --color-text-muted: #6c757d;
+  --color-footer-bg: #FFFFFF;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-card-border: rgba(0, 0, 0, 0.08);
+  --color-input-bg: #FFFFFF;
+  --color-input-text: #333333;
+  --color-input-border: #ced4da;
+  color-scheme: light;
+}
+
+/* Modo Nocturno / Oscuro explícito */
+:root[data-theme="dark"] {
+  --color-background: #1C1518; /* Oscuro con matiz guinda */
+  --color-surface: #291D21;    /* Tarjetas / paneles */
+  --color-text: #F5EDF0;       /* Texto principal */
+  --color-text-muted: #b5a4ab;
+  --color-footer-bg: #140E11;  /* Footer */
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-card-border: rgba(255, 255, 255, 0.1);
+  --color-input-bg: #22171b;
+  --color-input-text: #F5EDF0;
+  --color-input-border: rgba(255, 255, 255, 0.2);
+  color-scheme: dark;
 }
 
 body {
@@ -25,6 +70,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-background);
   color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {

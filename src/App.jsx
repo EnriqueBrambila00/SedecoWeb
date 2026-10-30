@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -12,6 +12,7 @@ import Register from './pages/Register'
 import Noticias from './pages/Noticias'
 import DashboardSuperAdmin from './pages/DashboardSuperAdmin'
 import DashboardAdmin from './pages/DashboardAdmin'
+import { ThemeProvider } from './context/ThemeContext'
 import './App.css'
 
 // Componente para proteger las rutas
@@ -39,47 +40,49 @@ function App() {
   }, [])
 
   return (
-    <Router>
-      <div className="app-container">
-        {/* El Navbar no debe verse si estamos en un dashboard (opcional, pero sugerido para paneles administrativos limpios) */}
-        <Routes>
-          <Route path="/dashboard-superadmin" element={null} />
-          <Route path="/dashboard-admin" element={null} />
-          <Route path="*" element={<><Navbar /><SedecoNavbar /></>} />
-        </Routes>
-        
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/programas" element={<Programas />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/noticias" element={<Noticias />} />
+    <ThemeProvider>
+      <Router>
+        <div className="app-container">
+          {/* El Navbar no debe verse si estamos en un dashboard (opcional, pero sugerido para paneles administrativos limpios) */}
+          <Routes>
+            <Route path="/dashboard-superadmin" element={null} />
+            <Route path="/dashboard-admin" element={null} />
+            <Route path="*" element={<><Navbar /><SedecoNavbar /></>} />
+          </Routes>
           
-          <Route 
-            path="/dashboard-superadmin" 
-            element={
-              <ProtectedRoute allowedRoles={[1]}>
-                <DashboardSuperAdmin />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/dashboard-admin" 
-            element={
-              <ProtectedRoute allowedRoles={[1, 2]}>
-                <DashboardAdmin />
-              </ProtectedRoute>
-            } 
-          />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/programas" element={<Programas />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/noticias" element={<Noticias />} />
+            
+            <Route 
+              path="/dashboard-superadmin" 
+              element={
+                <ProtectedRoute allowedRoles={[1]}>
+                  <DashboardSuperAdmin />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/dashboard-admin" 
+              element={
+                <ProtectedRoute allowedRoles={[1, 2]}>
+                  <DashboardAdmin />
+                </ProtectedRoute>
+              } 
+            />
+          </Routes>
 
-        <Routes>
-          <Route path="/dashboard-superadmin" element={null} />
-          <Route path="/dashboard-admin" element={null} />
-          <Route path="*" element={<Footer />} />
-        </Routes>
-      </div>
-    </Router>
+          <Routes>
+            <Route path="/dashboard-superadmin" element={null} />
+            <Route path="/dashboard-admin" element={null} />
+            <Route path="*" element={<Footer />} />
+          </Routes>
+        </div>
+      </Router>
+    </ThemeProvider>
   )
 }
 

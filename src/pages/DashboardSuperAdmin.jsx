@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ThemeToggle from '../components/ThemeToggle';
 
 const DashboardSuperAdmin = () => {
   const navigate = useNavigate();
@@ -213,6 +214,7 @@ const DashboardSuperAdmin = () => {
         
         
         <div className="mt-5 text-center">
+          <ThemeToggle variant="sidebar" className="mb-2" />
           <button className="btn btn-outline-light w-100 mb-2" onClick={() => navigate('/')}>
             <i className="fa fa-arrow-left mr-2"></i> Volver a la Página
           </button>

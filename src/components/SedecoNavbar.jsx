@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const SedecoNavbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -69,7 +70,10 @@ const SedecoNavbar = () => {
               </div>
             </li>
           </ul>
-          <ul className="navbar-nav ml-auto">
+          <ul className="navbar-nav ml-auto align-items-md-center">
+            <li className="nav-item mr-md-2 my-2 my-md-0">
+              <ThemeToggle />
+            </li>
             {!isLoggedIn ? (
               <li className="nav-item">
                 <Link className="nav-link font-weight-bold" to="/login" style={{ color: 'var(--color-secondary)' }}>

@@ -34,7 +34,7 @@
 .card {
   background-color: var(--color-surface) !important;
   color: var(--color-text) !important;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-card-border);
 }
 
 .text-primary {
@@ -165,3 +165,160 @@
   transform: translateY(-5px);
   box-shadow: 0 1.5rem 4rem rgba(0,0,0,.2);
 }
+
+/* Transiciones suaves entre modos */
+.app-container, .card, .navbar, .modal-content, .footer-backgroundcolor-pu, .form-control {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Botón de cambio de tema */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  user-select: none;
+  line-height: 1.2;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-secondary);
+}
+
+.theme-toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(188, 149, 92, 0.3);
+}
+
+.theme-toggle-light {
+  background-color: #fdfafb;
+  border-color: rgba(127, 40, 65, 0.25);
+  color: var(--color-primary);
+}
+
+.theme-toggle-light:hover {
+  background-color: #fcf1f4;
+  border-color: var(--color-primary);
+}
+
+.theme-toggle-dark {
+  background-color: #38272d;
+  border-color: rgba(188, 149, 92, 0.4);
+  color: #fcefe3;
+}
+
+.theme-toggle-dark:hover {
+  background-color: #4a343c;
+  border-color: var(--color-secondary);
+}
+
+.theme-toggle-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.theme-icon-sun {
+  color: #f39c12;
+  animation: sunGlow 3s infinite ease-in-out;
+}
+
+.theme-icon-moon {
+  color: var(--color-primary);
+}
+
+@keyframes sunGlow {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(20deg) scale(1.15); }
+}
+
+.theme-toggle-sidebar {
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-sidebar:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* Ajustes de componentes Bootstrap para Modo Oscuro */
+[data-theme="dark"] .card {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .form-control {
+  background-color: var(--color-input-bg) !important;
+  color: var(--color-input-text) !important;
+  border-color: var(--color-input-border) !important;
+}
+
+[data-theme="dark"] .form-control:focus {
+  background-color: #2b1d22 !important;
+  color: #ffffff !important;
+  border-color: var(--color-secondary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(188, 149, 92, 0.25) !important;
+}
+
+[data-theme="dark"] .input-group-text {
+  background-color: var(--color-input-bg) !important;
+  color: var(--color-input-text) !important;
+  border-color: var(--color-input-border) !important;
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .table {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .table td,
+[data-theme="dark"] .table th {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--color-text-muted) !important;
+}
+
+[data-theme="dark"] .footer-texto-pu {
+  color: var(--color-text-muted) !important;
+}
+
+[data-theme="dark"] .dropdown-menu {
+  background-color: var(--color-surface) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .dropdown-item {
+  color: var(--color-text) !important;
+}
+
+[data-theme="dark"] .dropdown-item:hover,
+[data-theme="dark"] .dropdown-item:focus {
+  background-color: rgba(188, 149, 92, 0.2) !important;
+  color: #ffffff !important;
+}
+
