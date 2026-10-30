@@ -61,33 +61,136 @@
 }
 
 /* Footer Fixes */
+/* Footer Styles */
 .footer-backgroundcolor-pu {
   background-color: var(--color-footer-bg);
   color: var(--color-primary);
-  padding: 3rem 0 1rem 0;
+  padding: 0;
   margin-top: auto;
+  border-top: 1px solid var(--color-border);
 }
 .footer-back-dark {
   background-color: var(--color-primary);
-  height: 8px;
+  height: 6px;
   width: 100%;
+}
+.footer-left-content {
+  max-width: 480px;
+}
+.footer-texto-pu {
+  font-size: 0.85rem;
+  color: #555555;
+  line-height: 1.5;
 }
 .linksfooter {
   color: var(--color-primary);
   text-decoration: none;
   font-size: 0.9rem;
+  transition: color 0.2s ease;
 }
 .linksfooter:hover {
   text-decoration: underline;
   color: var(--color-secondary);
 }
-.footer-social-separador-pu {
-  margin-top: 1rem;
+.footer-legal-links a:hover {
+  text-decoration: underline;
 }
-.footer-texto-pu {
+
+/* Right content: Centered Social & Services */
+.footer-right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.footer-social-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-social-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: var(--color-primary);
+  background-color: rgba(127, 40, 65, 0.08);
+  font-size: 1.45rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.footer-social-link:hover {
+  background-color: var(--color-primary);
+  color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(127, 40, 65, 0.25);
+}
+
+.footer-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 0.5rem 0.25rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.footer-service-item:hover {
+  text-decoration: none;
+  color: var(--color-secondary) !important;
+  transform: translateY(-2px);
+}
+
+.footer-service-icon {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-service-item:hover .footer-service-icon {
+  transform: scale(1.12);
+  color: var(--color-secondary);
+}
+
+.footer-service-label {
   font-size: 0.85rem;
-  color: #555555;
-  margin-top: 1rem;
+  line-height: 1.25;
+  font-weight: 500;
+  text-align: center;
 }
 
 /* Interactive Program Cards */
@@ -321,4 +424,27 @@
   background-color: rgba(188, 149, 92, 0.2) !important;
   color: #ffffff !important;
 }
+
+[data-theme="dark"] .footer-social-link {
+  color: var(--color-secondary);
+  background-color: rgba(188, 149, 92, 0.15);
+}
+
+[data-theme="dark"] .footer-social-link:hover {
+  background-color: var(--color-secondary);
+  color: #140E11 !important;
+  box-shadow: 0 4px 14px rgba(188, 149, 92, 0.35);
+}
+
+[data-theme="dark"] .footer-service-item,
+[data-theme="dark"] .footer-service-icon,
+[data-theme="dark"] .linksfooter {
+  color: var(--color-secondary) !important;
+}
+
+[data-theme="dark"] .footer-service-item:hover,
+[data-theme="dark"] .linksfooter:hover {
+  color: #ffffff !important;
+}
+
 
