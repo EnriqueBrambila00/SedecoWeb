@@ -96,7 +96,7 @@ const Footer = () => {
                 </a>
 
                 <a 
-                  href="http://directoriointegral.col.gob.mx/" 
+                  href="https://directoriointegral.col.gob.mx/v3/" 
                   target="_blank" 
                   rel="noreferrer" 
                   title="Directorio integral" 

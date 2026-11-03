@@ -13,6 +13,7 @@ import Noticias from './pages/Noticias'
 import DashboardSuperAdmin from './pages/DashboardSuperAdmin'
 import DashboardAdmin from './pages/DashboardAdmin'
 import { ThemeProvider } from './context/ThemeContext'
+import ContactoSedeco from './pages/ContactoSedeco'
 import './App.css'
 
 // Componente para proteger las rutas
@@ -21,12 +22,12 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   if (!usuarioInfo) {
     return <Navigate to="/login" replace />;
   }
-  
+
   const usuario = JSON.parse(usuarioInfo);
   if (allowedRoles && !allowedRoles.includes(usuario.id_rol)) {
     return <Navigate to="/" replace />; // Redirigir al inicio si no tiene el rol
   }
-  
+
   return children;
 };
 
@@ -49,29 +50,30 @@ function App() {
             <Route path="/dashboard-admin" element={null} />
             <Route path="*" element={<><Navbar /><SedecoNavbar /></>} />
           </Routes>
-          
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/programas" element={<Programas />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/noticias" element={<Noticias />} />
-            
-            <Route 
-              path="/dashboard-superadmin" 
+            <Route path="/contactoSedeco" element={<ContactoSedeco />} />
+
+            <Route
+              path="/dashboard-superadmin"
               element={
                 <ProtectedRoute allowedRoles={[1]}>
                   <DashboardSuperAdmin />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/dashboard-admin" 
+            <Route
+              path="/dashboard-admin"
               element={
                 <ProtectedRoute allowedRoles={[1, 2]}>
                   <DashboardAdmin />
                 </ProtectedRoute>
-              } 
+              }
             />
           </Routes>
 

@@ -65,8 +65,8 @@ const SedecoNavbar = () => {
                 Más opciones
               </a>
               <div className="dropdown-menu" aria-labelledby="masOpcionesDropdown" style={{ backgroundColor: 'var(--color-surface)' }}>
-                <a className="dropdown-item" href="#directorio" style={{ color: 'var(--color-text)' }}>Directorio</a>
-                <a className="dropdown-item" href="#contacto" style={{ color: 'var(--color-text)' }}>Contacto SEDECO</a>
+                <a className="dropdown-item" href="https://directoriointegral.col.gob.mx/v3/" target="_blank" rel="noreferrer" style={{ color: 'var(--color-text)' }}>Directorio</a>
+                <Link className="dropdown-item nav-link" to="/contactoSedeco" style={{ color: 'var(--color-text)' }}>Contacto SEDECO</Link>
               </div>
             </li>
           </ul>
@@ -84,9 +84,9 @@ const SedecoNavbar = () => {
               <>
                 {JSON.parse(localStorage.getItem('usuario'))?.id_rol === 1 && (
                   <li className="nav-item">
-                    <Link 
-                      className="nav-link text-white px-3 font-weight-bold mr-2" 
-                      to="/dashboard-superadmin" 
+                    <Link
+                      className="nav-link text-white px-3 font-weight-bold mr-2"
+                      to="/dashboard-superadmin"
                       style={{ backgroundColor: 'var(--color-secondary)', borderRadius: '20px' }}
                     >
                       <i className="fa fa-tachometer mr-1"></i> Panel de Control
@@ -95,9 +95,9 @@ const SedecoNavbar = () => {
                 )}
                 {JSON.parse(localStorage.getItem('usuario'))?.id_rol === 2 && (
                   <li className="nav-item">
-                    <Link 
-                      className="nav-link text-white px-3 font-weight-bold mr-2" 
-                      to="/dashboard-admin" 
+                    <Link
+                      className="nav-link text-white px-3 font-weight-bold mr-2"
+                      to="/dashboard-admin"
                       style={{ backgroundColor: 'var(--color-secondary)', borderRadius: '20px' }}
                     >
                       <i className="fa fa-tachometer mr-1"></i> Panel de Control
@@ -105,17 +105,17 @@ const SedecoNavbar = () => {
                   </li>
                 )}
                 <li className="nav-item">
-                  <span 
-                    className="nav-link text-white px-3 font-weight-bold" 
+                  <span
+                    className="nav-link text-white px-3 font-weight-bold"
                     style={{ backgroundColor: 'var(--color-primary)', borderRadius: '20px' }}
                   >
                     <i className="fa fa-user-circle mr-1"></i> {userName}
                   </span>
                 </li>
                 <li className="nav-item">
-                  <button 
-                    onClick={handleLogout} 
-                    className="btn btn-outline-light nav-link px-3 ml-2 text-danger font-weight-bold" 
+                  <button
+                    onClick={handleLogout}
+                    className="btn btn-outline-light nav-link px-3 ml-2 text-danger font-weight-bold"
                     style={{ borderRadius: '20px', backgroundColor: 'transparent', border: 'none' }}
                   >
                     <i className="fa fa-sign-out mr-1"></i> Salir
