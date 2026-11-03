@@ -102,7 +102,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 420px;
+  max-width: 380px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -115,13 +115,21 @@
 }
 
 .footer-social-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.footer-social-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-social-link {
@@ -134,8 +142,15 @@
   color: var(--color-primary);
   background-color: rgba(127, 40, 65, 0.08);
   font-size: 1.45rem;
+  line-height: 1;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+}
+
+.footer-social-link i,
+.footer-social-link svg {
+  display: block;
+  line-height: 1;
 }
 
 .footer-social-link:hover {
@@ -150,6 +165,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   width: 100%;
+  justify-items: center;
+  align-items: start;
   text-align: center;
 }
 
@@ -158,6 +175,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
   color: var(--color-primary);
   text-decoration: none;
   padding: 0.5rem 0.25rem;
@@ -172,13 +190,24 @@
 }
 
 .footer-service-icon {
-  height: 38px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
   color: var(--color-primary);
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-service-icon i {
+  display: block;
+  line-height: 1;
+  font-size: 1.85rem;
+}
+
+.footer-service-icon .fa-download {
+  transform: translateY(2px);
 }
 
 .footer-service-item:hover .footer-service-icon {
@@ -191,6 +220,10 @@
   line-height: 1.25;
   font-weight: 500;
   text-align: center;
+  min-height: 2.5em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 /* Interactive Program Cards */
