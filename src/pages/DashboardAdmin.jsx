@@ -16,8 +16,9 @@ const DashboardAdmin = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://sedecobackend.onrender.com';
         const token = localStorage.getItem('token');
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/stats`, {
+        const response = await fetch(`${apiUrl}/api/dashboard/stats`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

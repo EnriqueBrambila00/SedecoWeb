@@ -10,8 +10,9 @@ const Noticias = () => {
     AOS.init();
     const fetchNoticias = async () => {
       try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://sedecobackend.onrender.com';
         // Al no pasar ?all=true, el backend solo regresa las de estatus "Activo"
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/noticias`);
+        const response = await fetch(`${apiUrl}/api/noticias`);
         if (response.ok) {
           const data = await response.json();
           setNoticias(data);

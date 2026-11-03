@@ -18,6 +18,7 @@ const DashboardSuperAdmin = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [noticiaEditando, setNoticiaEditando] = useState(null);
 
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://sedecobackend.onrender.com';
   const token = localStorage.getItem('token');
   const usuarioLocal = JSON.parse(localStorage.getItem('usuario'));
 
@@ -29,7 +30,7 @@ const DashboardSuperAdmin = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/stats`, {
+      const response = await fetch(`${apiUrl}/api/dashboard/stats`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -42,7 +43,7 @@ const DashboardSuperAdmin = () => {
 
   const fetchUsuarios = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/usuarios`, {
+      const response = await fetch(`${apiUrl}/api/usuarios`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -54,7 +55,7 @@ const DashboardSuperAdmin = () => {
 
   const fetchNoticias = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/noticias?all=true`);
+      const response = await fetch(`${apiUrl}/api/noticias?all=true`);
       if (response.ok) {
         const data = await response.json();
         setNoticias(data);
@@ -65,7 +66,7 @@ const DashboardSuperAdmin = () => {
   // --- Funciones de Usuarios ---
   const cambiarRol = async (id_usuario, nuevoRol) => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/usuarios/${id_usuario}/rol`, {
+      const res = await fetch(`${apiUrl}/api/usuarios/${id_usuario}/rol`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +84,7 @@ const DashboardSuperAdmin = () => {
   const eliminarUsuario = async (id_usuario) => {
     if(!window.confirm("¿Estás seguro de eliminar este usuario?")) return;
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/usuarios/${id_usuario}`, {
+      const res = await fetch(`${apiUrl}/api/usuarios/${id_usuario}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -98,7 +99,7 @@ const DashboardSuperAdmin = () => {
   const handleCrearNoticia = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/noticias`, {
+      const res = await fetch(`${apiUrl}/api/noticias`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -127,7 +128,7 @@ const DashboardSuperAdmin = () => {
   const handleGuardarEdicion = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/noticias/${noticiaEditando.id_noticia}`, {
+      const res = await fetch(`${apiUrl}/api/noticias/${noticiaEditando.id_noticia}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -153,7 +154,7 @@ const DashboardSuperAdmin = () => {
   const cambiarEstatusNoticia = async (id_noticia, estatusActual) => {
     const nuevoEstatus = estatusActual === 'Activo' ? 'Inactivo' : 'Activo';
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/noticias/${id_noticia}`, {
+      const res = await fetch(`${apiUrl}/api/noticias/${id_noticia}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ estatus: nuevoEstatus })
@@ -165,7 +166,7 @@ const DashboardSuperAdmin = () => {
   const eliminarNoticia = async (id_noticia) => {
     if(!window.confirm("¿Seguro que deseas eliminar esta noticia permanentemente?")) return;
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/noticias/${id_noticia}`, {
+      const res = await fetch(`${apiUrl}/api/noticias/${id_noticia}`, {
         method: 'DELETE'
       });
       if (res.ok) { fetchNoticias(); }
