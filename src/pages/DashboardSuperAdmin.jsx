@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ThemeToggle from '../components/ThemeToggle';
+import PanelEncuestasAdmin from '../components/PanelEncuestasAdmin';
+import { obtenerRespuestasEncuestas } from '../services/encuestasService';
 
 const DashboardSuperAdmin = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('inicio');
-  const [stats, setStats] = useState({ usuarios: 0, noticias: 0, encuestas: 0, respuestas: 0, mensajes: 0 });
+  const [stats, setStats] = useState({ usuarios: 0, noticias: 0, encuestas: 2, respuestas: 0, mensajes: 0 });
   const [usuarios, setUsuarios] = useState([]);
   const [noticias, setNoticias] = useState([]);
+  const [respuestasEncuestas, setRespuestasEncuestas] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Estados para Modal de Nueva Noticia
@@ -26,7 +29,17 @@ const DashboardSuperAdmin = () => {
     fetchStats();
     fetchUsuarios();
     fetchNoticias();
+    fetchEncuestas();
   }, []);
+
+  const fetchEncuestas = async () => {
+    try {
+      const lista = await obtenerRespuestasEncuestas();
+      setRespuestasEncuestas(lista);
+    } catch (error) {
+      console.error("Error al obtener respuestas de encuestas:", error);
+    }
+  };
 
   const fetchStats = async () => {
     try {
@@ -211,6 +224,14 @@ const DashboardSuperAdmin = () => {
               <i className="fa fa-newspaper-o mr-2"></i> Noticias
             </button>
           </li>
+          <li className="nav-item mb-2">
+            <button 
+              className={`nav-link text-white text-left w-100 btn ${activeTab === 'encuestas' ? 'bg-dark rounded' : ''}`}
+              onClick={() => setActiveTab('encuestas')}
+            >
+              <i className="fa fa-list-alt mr-2"></i> Encuestas
+            </button>
+          </li>
         </ul>
         
         
@@ -232,6 +253,7 @@ const DashboardSuperAdmin = () => {
             {activeTab === 'inicio' && 'Panel de Control Principal'}
             {activeTab === 'usuarios' && 'Gestión de Usuarios'}
             {activeTab === 'noticias' && 'Gestión de Noticias'}
+            {activeTab === 'encuestas' && 'Gestión de Encuestas y Diagnósticos'}
           </h2>
           <span className="badge badge-primary p-2" style={{ backgroundColor: 'var(--color-secondary)' }}>Nivel: Superadmin</span>
         </div>
@@ -249,11 +271,28 @@ const DashboardSuperAdmin = () => {
               </div>
             </div>
             <div className="col-md-3 mb-4">
-              <div className="card shadow-sm border-0 h-100" style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)' }}>
+              <div
+                className="card shadow-sm border-0 h-100"
+                style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)', cursor: 'pointer' }}
+                onClick={() => setActiveTab('encuestas')}
+              >
                 <div className="card-body text-center">
                   <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-file-text"></i></h1>
                   <h5 className="card-title text-muted">Encuestas Activas</h5>
-                  <h2>{loading ? '...' : stats.encuestas}</h2>
+                  <h2>{loading ? '...' : Math.max(2, Number(stats.encuestas) || 2)}</h2>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3 mb-4">
+              <div
+                className="card shadow-sm border-0 h-100"
+                style={{ backgroundColor: 'var(--color-surface)', color: 'var(--color-text)', cursor: 'pointer' }}
+                onClick={() => setActiveTab('encuestas')}
+              >
+                <div className="card-body text-center">
+                  <h1 style={{ color: 'var(--color-secondary)' }}><i className="fa fa-check-square-o"></i></h1>
+                  <h5 className="card-title text-muted">Respuestas Encuestas</h5>
+                  <h2>{loading ? '...' : Math.max(respuestasEncuestas.length, Number(stats.respuestas) || 0)}</h2>
                 </div>
               </div>
             </div>
@@ -267,6 +306,14 @@ const DashboardSuperAdmin = () => {
               </div>
             </div>
           </div>
+        )}
+
+        {/* CONTENIDO ENCUESTAS */}
+        {activeTab === 'encuestas' && (
+          <PanelEncuestasAdmin
+            respuestas={respuestasEncuestas}
+            onRefresh={fetchEncuestas}
+          />
         )}
 
         {/* CONTENIDO USUARIOS */}

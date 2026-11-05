@@ -60,6 +60,9 @@ const SedecoNavbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/noticias" style={{ color: 'var(--color-text)' }}>Noticias</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/encuestas" style={{ color: 'var(--color-text)' }}>Encuestas</Link>
+            </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="masOpcionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: 'var(--color-text)' }}>
                 Más opciones

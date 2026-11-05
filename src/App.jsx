@@ -14,6 +14,7 @@ import DashboardSuperAdmin from './pages/DashboardSuperAdmin'
 import DashboardAdmin from './pages/DashboardAdmin'
 import { ThemeProvider } from './context/ThemeContext'
 import ContactoSedeco from './pages/ContactoSedeco'
+import Encuestas from './pages/Encuestas'
 import './App.css'
 
 // Componente para proteger las rutas
@@ -58,6 +59,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/noticias" element={<Noticias />} />
             <Route path="/contactoSedeco" element={<ContactoSedeco />} />
+            <Route path="/encuestas" element={<Encuestas />} />
 
             <Route
               path="/dashboard-superadmin"
